@@ -20,10 +20,10 @@ echo "*******  Configuration Server has started"
 
 
 echo "********************************************************"
-echo "Waiting for the kafka server to start on port  $KAFKASERVER_PORT"
+echo "Waiting for the zookeeper server to start on port  $KAFKASERVER_PORT"
 echo "********************************************************"
-while ! `nc -z kafkaserver $KAFKASERVER_PORT`; do sleep 10; done
-echo "******* Kafka Server has started"
+while ! `nc -z zookeeper $KAFKASERVER_PORT`; do sleep 10; done
+echo "******* zookeeper Server has started"
 
 echo "********************************************************"
 echo "Starting Organization Service                           "
@@ -32,6 +32,6 @@ java -Djava.security.egd=file:/dev/./urandom -Dserver.port=$SERVER_PORT   \
      -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI             \
      -Dspring.cloud.config.uri=$CONFIGSERVER_URI                          \
      -Dspring.profiles.active=$PROFILE                                   \
-     -Dspring.cloud.stream.kafka.binder.zkNodes=$KAFKASERVER_URI          \
-     -Dspring.cloud.stream.kafka.binder.brokers=$ZKSERVER_URI             \
+     -Dspring.cloud.stream.kafka.binder.zkNodes=$ZKSERVER_URI          \
+     -Dspring.cloud.stream.kafka.binder.brokers=$KAFKASERVER_URI             \
      -jar /usr/local/organizationservice/@project.build.finalName@.jar

@@ -102,8 +102,8 @@ public class LicenseService {
       licenseRepository.save(license);
     }
 
-    public void deleteLicense(License license){
-        licenseRepository.deleteById(license.getLicenseId());
+    public void deleteLicense(String licenseId){
+        licenseRepository.deleteById(licenseId);
     }
 
 }

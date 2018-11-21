@@ -57,7 +57,7 @@ public class LicenseServiceController {
 
     @RequestMapping(value="{licenseId}",method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLicenses( @PathVariable("licenseId") String licenseId, @RequestBody License license) {
-         licenseService.deleteLicense(license);
+    public void deleteLicenses( @PathVariable("licenseId") String licenseId) {
+         licenseService.deleteLicense(licenseId);
     }
 }
